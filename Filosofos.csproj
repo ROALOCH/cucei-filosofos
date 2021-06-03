@@ -46,14 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -72,9 +76,63 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\POPPINS-BLACK.TTF" />
+    <None Include="Resources\POPPINS-BLACKITALIC.TTF" />
+    <None Include="Resources\POPPINS-BOLD.TTF" />
+    <None Include="Resources\POPPINS-BOLDITALIC.TTF" />
+    <None Include="Resources\POPPINS-EXTRABOLD.TTF" />
+    <None Include="Resources\POPPINS-EXTRABOLDITALIC.TTF" />
+    <None Include="Resources\POPPINS-EXTRALIGHT.TTF" />
+    <None Include="Resources\POPPINS-EXTRALIGHTITALIC.TTF" />
+    <None Include="Resources\POPPINS-ITALIC.TTF" />
+    <None Include="Resources\POPPINS-LIGHT.TTF" />
+    <None Include="Resources\POPPINS-LIGHTITALIC.TTF" />
+    <None Include="Resources\POPPINS-MEDIUM.TTF" />
+    <None Include="Resources\POPPINS-MEDIUMITALIC.TTF" />
+    <None Include="Resources\POPPINS-REGULAR.TTF" />
+    <None Include="Resources\POPPINS-SEMIBOLD.TTF" />
+    <None Include="Resources\POPPINS-SEMIBOLDITALIC.TTF" />
+    <None Include="Resources\POPPINS-THIN.TTF" />
+    <None Include="Resources\POPPINS-THINITALIC.TTF" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork4A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork3A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork2A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork1A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork0A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
