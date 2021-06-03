@@ -50,8 +50,7 @@ namespace Filosofos
             this.LBL_WaitInfo = new System.Windows.Forms.Label();
             this.LBL_EatInfo = new System.Windows.Forms.Label();
             this.LBL_EatColor = new System.Windows.Forms.Label();
-            this.LBL_ThinkInfo = new System.Windows.Forms.Label();
-            this.LBL_ThinkColor = new System.Windows.Forms.Label();
+            this.BW_UpdateUI = new System.ComponentModel.BackgroundWorker();
             this.GB_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Fork4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Fork3)).BeginInit();
@@ -89,7 +88,7 @@ namespace Filosofos
             this.LBL_Philosopher4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Philosopher4.Location = new System.Drawing.Point(188, 280);
             this.LBL_Philosopher4.Name = "LBL_Philosopher4";
-            this.LBL_Philosopher4.Size = new System.Drawing.Size(82, 60);
+            this.LBL_Philosopher4.Size = new System.Drawing.Size(82, 97);
             this.LBL_Philosopher4.TabIndex = 10;
             this.LBL_Philosopher4.Text = "Filósofo 5";
             this.LBL_Philosopher4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -97,9 +96,9 @@ namespace Filosofos
             // LBL_Philosopher3
             // 
             this.LBL_Philosopher3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_Philosopher3.Location = new System.Drawing.Point(451, 64);
+            this.LBL_Philosopher3.Location = new System.Drawing.Point(451, 40);
             this.LBL_Philosopher3.Name = "LBL_Philosopher3";
-            this.LBL_Philosopher3.Size = new System.Drawing.Size(82, 60);
+            this.LBL_Philosopher3.Size = new System.Drawing.Size(82, 84);
             this.LBL_Philosopher3.TabIndex = 9;
             this.LBL_Philosopher3.Text = "Filósofo 4";
             this.LBL_Philosopher3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,7 +108,7 @@ namespace Filosofos
             this.LBL_Philosopher2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Philosopher2.Location = new System.Drawing.Point(719, 280);
             this.LBL_Philosopher2.Name = "LBL_Philosopher2";
-            this.LBL_Philosopher2.Size = new System.Drawing.Size(82, 60);
+            this.LBL_Philosopher2.Size = new System.Drawing.Size(82, 97);
             this.LBL_Philosopher2.TabIndex = 8;
             this.LBL_Philosopher2.Text = "Filósofo 3";
             this.LBL_Philosopher2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -119,7 +118,7 @@ namespace Filosofos
             this.LBL_Philosopher1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Philosopher1.Location = new System.Drawing.Point(617, 515);
             this.LBL_Philosopher1.Name = "LBL_Philosopher1";
-            this.LBL_Philosopher1.Size = new System.Drawing.Size(82, 60);
+            this.LBL_Philosopher1.Size = new System.Drawing.Size(82, 93);
             this.LBL_Philosopher1.TabIndex = 7;
             this.LBL_Philosopher1.Text = "Filósofo 2";
             this.LBL_Philosopher1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -129,7 +128,7 @@ namespace Filosofos
             this.LBL_Philosopher0.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Philosopher0.Location = new System.Drawing.Point(285, 515);
             this.LBL_Philosopher0.Name = "LBL_Philosopher0";
-            this.LBL_Philosopher0.Size = new System.Drawing.Size(82, 60);
+            this.LBL_Philosopher0.Size = new System.Drawing.Size(82, 93);
             this.LBL_Philosopher0.TabIndex = 6;
             this.LBL_Philosopher0.Text = "Filósofo 1";
             this.LBL_Philosopher0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -237,6 +236,7 @@ namespace Filosofos
             this.BTN_Start.TabIndex = 0;
             this.BTN_Start.Text = "INICIAR";
             this.BTN_Start.UseVisualStyleBackColor = true;
+            this.BTN_Start.Click += new System.EventHandler(this.BTN_Start_Click);
             // 
             // GB_Info
             // 
@@ -252,17 +252,25 @@ namespace Filosofos
             // 
             this.LB_Info.BackColor = System.Drawing.SystemColors.Control;
             this.LB_Info.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LB_Info.ItemHeight = 28;
+            this.LB_Info.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_Info.ItemHeight = 19;
+            this.LB_Info.Items.AddRange(new object[] {
+            " ",
+            " ",
+            " ",
+            " ",
+            " "});
             this.LB_Info.Location = new System.Drawing.Point(19, 51);
             this.LB_Info.Name = "LB_Info";
             this.LB_Info.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.LB_Info.Size = new System.Drawing.Size(203, 308);
+            this.LB_Info.Size = new System.Drawing.Size(203, 304);
+            this.LB_Info.Sorted = true;
             this.LB_Info.TabIndex = 0;
             // 
             // LBL_WaitColor
             // 
             this.LBL_WaitColor.BackColor = System.Drawing.Color.SkyBlue;
-            this.LBL_WaitColor.Location = new System.Drawing.Point(1025, 601);
+            this.LBL_WaitColor.Location = new System.Drawing.Point(1020, 576);
             this.LBL_WaitColor.Name = "LBL_WaitColor";
             this.LBL_WaitColor.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.LBL_WaitColor.Size = new System.Drawing.Size(23, 23);
@@ -273,7 +281,7 @@ namespace Filosofos
             this.LBL_WaitInfo.AutoSize = true;
             this.LBL_WaitInfo.BackColor = System.Drawing.SystemColors.Control;
             this.LBL_WaitInfo.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_WaitInfo.Location = new System.Drawing.Point(1049, 601);
+            this.LBL_WaitInfo.Location = new System.Drawing.Point(1044, 576);
             this.LBL_WaitInfo.Name = "LBL_WaitInfo";
             this.LBL_WaitInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.LBL_WaitInfo.Size = new System.Drawing.Size(90, 28);
@@ -286,7 +294,7 @@ namespace Filosofos
             this.LBL_EatInfo.AutoSize = true;
             this.LBL_EatInfo.BackColor = System.Drawing.SystemColors.Control;
             this.LBL_EatInfo.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_EatInfo.Location = new System.Drawing.Point(1049, 631);
+            this.LBL_EatInfo.Location = new System.Drawing.Point(1044, 606);
             this.LBL_EatInfo.Name = "LBL_EatInfo";
             this.LBL_EatInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.LBL_EatInfo.Size = new System.Drawing.Size(98, 28);
@@ -297,40 +305,22 @@ namespace Filosofos
             // LBL_EatColor
             // 
             this.LBL_EatColor.BackColor = System.Drawing.Color.LimeGreen;
-            this.LBL_EatColor.Location = new System.Drawing.Point(1025, 631);
+            this.LBL_EatColor.Location = new System.Drawing.Point(1020, 606);
             this.LBL_EatColor.Name = "LBL_EatColor";
             this.LBL_EatColor.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.LBL_EatColor.Size = new System.Drawing.Size(23, 23);
             this.LBL_EatColor.TabIndex = 13;
             // 
-            // LBL_ThinkInfo
+            // BW_UpdateUI
             // 
-            this.LBL_ThinkInfo.AutoSize = true;
-            this.LBL_ThinkInfo.BackColor = System.Drawing.SystemColors.Control;
-            this.LBL_ThinkInfo.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_ThinkInfo.Location = new System.Drawing.Point(1049, 571);
-            this.LBL_ThinkInfo.Name = "LBL_ThinkInfo";
-            this.LBL_ThinkInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LBL_ThinkInfo.Size = new System.Drawing.Size(95, 28);
-            this.LBL_ThinkInfo.TabIndex = 16;
-            this.LBL_ThinkInfo.Text = "PENSANDO";
-            this.LBL_ThinkInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // LBL_ThinkColor
-            // 
-            this.LBL_ThinkColor.BackColor = System.Drawing.Color.DeepPink;
-            this.LBL_ThinkColor.Location = new System.Drawing.Point(1025, 571);
-            this.LBL_ThinkColor.Name = "LBL_ThinkColor";
-            this.LBL_ThinkColor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LBL_ThinkColor.Size = new System.Drawing.Size(23, 23);
-            this.LBL_ThinkColor.TabIndex = 15;
+            this.BW_UpdateUI.WorkerReportsProgress = true;
+            this.BW_UpdateUI.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BW_UpdateUI_DoWork);
+            this.BW_UpdateUI.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BW_UpdateUI_ProgressChanged);
             // 
             // Home
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.LBL_ThinkInfo);
-            this.Controls.Add(this.LBL_ThinkColor);
             this.Controls.Add(this.LBL_EatInfo);
             this.Controls.Add(this.LBL_EatColor);
             this.Controls.Add(this.LBL_WaitInfo);
@@ -380,8 +370,7 @@ namespace Filosofos
         private System.Windows.Forms.Label LBL_WaitInfo;
         private System.Windows.Forms.Label LBL_EatInfo;
         private System.Windows.Forms.Label LBL_EatColor;
-        private System.Windows.Forms.Label LBL_ThinkInfo;
-        private System.Windows.Forms.Label LBL_ThinkColor;
+        private System.ComponentModel.BackgroundWorker BW_UpdateUI;
     }
 }
 

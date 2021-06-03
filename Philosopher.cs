@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Filosofos
@@ -11,56 +7,71 @@ namespace Filosofos
     class Philosopher
     {
         int id = 0;
-        char state = 'T'; // T = Thinking, W = Waiting, E = Eating
+        int meals = 0;
+        char state = 'W'; // W = Waiting, E = Eating
+
+        int forkOne, forkTwo;
+        Semaphore[] forks;
 
         // UI //
 
         Label box = null;
+        ListBox listBox = null;
         Image forkLeftImg = null, forkRightImg = null;
         PictureBox forkLeft = null, forkRight = null;
 
-        Color thinkingColor = Color.FromName("DeepPink");
         Color waitingColor = Color.FromName("SkyBlue");
         Color eatingColor = Color.FromName("LimeGreen");
 
-        public Philosopher(int id, PictureBox forkLeft, PictureBox forkRight, Label box)
+        public Philosopher(int id, int forkOne, int forkTwo, PictureBox forkLeft, PictureBox forkRight, Label box, Semaphore[] forks, ListBox listBox)
         {
             this.id = id;
+            this.forkOne = forkOne;
+            this.forkTwo = forkTwo;
             this.forkLeft = forkLeft;
             this.forkRight = forkRight;
             this.box = box;
+            this.forks = forks;
+
+            this.listBox = listBox;
+
+            changeForksStateUI(false);
+            changePhilosopherBoxStateUI(waitingColor);
         }
 
         public int getID() => id;
+        public int getMeals() => meals;
+        public void addMeal()
+        {
+            meals = meals + 1;
+        }
         public char getState() => state;
         public void setState(char state)
         {
             this.state = state;
         }
+
+        // UI //
         public void changeState(char state)
         {
-            // T = Thinking, W = Waiting, E = Eating
+            // W = Waiting, E = Eating
 
             switch (state)
             {
-                case 'T':
-                    changeForksState(false);
-                    changePhilosopherBoxState(thinkingColor);
-                    break;
                 case 'W':
-                    changeForksState(false);
-                    changePhilosopherBoxState(waitingColor);
+                    changeForksStateUI(false);
+                    changePhilosopherBoxStateUI(waitingColor);
                     break;
                 case 'E':
-                    changeForksState(true);
-                    changePhilosopherBoxState(eatingColor);
+                    changeForksStateUI(true);
+                    changePhilosopherBoxStateUI(eatingColor);
                     break;
                 default:
                     break;
             }
         }
 
-        private void changeForksState(bool active)
+        private void changeForksStateUI(bool active)
         {
 
             switch (id)
@@ -90,9 +101,13 @@ namespace Filosofos
             this.forkLeft.Image = forkLeftImg;
             this.forkRight.Image = forkRightImg;            
         }
-        private void changePhilosopherBoxState(Color color)
+        private void changePhilosopherBoxStateUI(Color color)
         {
             box.ForeColor = color;
+        }
+        public void updateMeals()
+        {
+            listBox.Items[id] = ($"Filósofo {id + 1} Comidas: {meals}");
         }
     }
 }
